@@ -1,2 +1,5 @@
-import os
-print(dir(os))
+import sys
+
+for p in sys.path:
+  print(p)
+
