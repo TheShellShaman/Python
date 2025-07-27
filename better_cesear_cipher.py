@@ -1,10 +1,11 @@
 #better cesear cipher
+
 word = 0
 while word == 0:
     try:
         word = input("Enter your word - ")
         for char in word:
-            if not char.isalpha() or not char.isnumeric():
+            if not (char.isalnum or char == " "):
                 raise ValueError
         else:
             continue
@@ -12,9 +13,6 @@ while word == 0:
         word = 0
     if word == 0:
         print("Please input a combination of numbers and letters")
-
-
-            
 
 
 shift =  0
@@ -32,13 +30,20 @@ while shift == 0:
 
 cipher = ""
 for char in word:
-    if not char.isalpha():
-        cipher += (char) 
-        continue 
-    code = ord(char) + shift 
-    print(chr(code), code) 
-    if code > ord("z"): 
-        code = (code -26) 
-    cipher += chr(code) 
+    if char.isalpha():
+        code = ord(char) + shift
+        if char.isupper():
+            first = ord('A')
+        else:
+            first = ord('a')
+        code -= first
+        code %= 26
+        # Append the encoded character to the message.
+        cipher += chr(first + code)
+    else:
+        # Append the original character to the message.
+        cipher += char
+#for char in cipher:
+   # print(char, ord(char))
 print(cipher) 
 
