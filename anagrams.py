@@ -1,11 +1,9 @@
 #Anagram Program
 
-#define Variables
-
 #first word to compare
 first_word = 0
 
-#Verify input is good
+#Verify 1st input is good
 while first_word == 0:
 
     try:
@@ -19,7 +17,7 @@ while first_word == 0:
 #second word to compare
 second_word = 0
 
-#verify input is good
+#verify 2nd input is good
 while second_word == 0:
 
     try:
@@ -31,33 +29,29 @@ while second_word == 0:
         second_word = 0
 
 
-#Compare the two words
-
-first = []
-second = []
+#dictionary variables
 count1 = {}
 count2 = {}
+
+#create dictionaries for both words
+
 for letter in first_word:
-    first.append(letter)
-
-for letter in second_word:
-    second.append(letter)
-
-for letter in first:
     if letter in count1:
         count1[letter] += 1
     else:
         count1[letter] = 1
-for letter in second:
+
+for letter in second_word:
     if letter in count2:
         count2[letter] += 1
     else:
         count2[letter] = 1
 
 
-
-
-print(first)
-print(second)
 print(count1)
 print(count2)
+
+if count1 == count2:
+    print("These words are anagrams")
+else:
+    print("These words are not anagrams")
